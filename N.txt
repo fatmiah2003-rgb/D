@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اليوم العالمي للتسامح - مدرسة ابتدائية عفراء للطفولة المبكرة</title>
+    <!-- تحميل مكتبة Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- تحميل خطوط عربية جميلة وواضحة -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Tajawal', 'sans-serif'],
+                        quran: ['Amiri', 'serif'],
+                    },
+                    colors: {
+                        pastel: {
+                            cream: '#fff9f7',
+                            blush: '#ffeef2',
+                            pink: '#f8a5c2',
+                            pinkDark: '#d6688e',
+                            lavender: '#e6d4f7',
+                            lavenderDark: '#9b6bc7',
+                            mint: '#d4f2e1',
+                            mintDark: '#52a377',
+                            sky: '#d6ecfa',
+                            skyDark: '#5897c4',
+                            gold: '#fcebbf',
+                            goldDark: '#c9942a',
+                            goldBorder: '#d8b467',
+                            text: '#4a2536'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* حركات مبهجة للقلوب والفراشات وحمامة السلام */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        @keyframes flyDove {
+            0% { transform: translate(0, 0) rotate(-2deg); }
+            25% { transform: translate(-8px, -10px) rotate(2deg); }
+            50% { transform: translate(0, -16px) rotate(-1deg); }
+            75% { transform: translate(8px, -8px) rotate(3deg); }
+            100% { transform: translate(0, 0) rotate(-2deg); }
+        }
+        @keyframes pulseHeart {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+        @keyframes riseUp {
+            0% { transform: translateY(100vh) scale(0.6); opacity: 0; }
+            20% { opacity: 0.85; }
+            80% { opacity: 0.85; }
+            100% { transform: translateY(-10vh) scale(1.1); opacity: 0; }
+        }
+
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+        .animate-dove { animation: flyDove 5.5s ease-in-out infinite; }
+        .animate-heart { animation: pulseHeart 2s ease-in-out infinite; }
+
+        /* خلفية باستيلية منعشة مطابقة للصورة */
+        body {
+            background: radial-gradient(circle at top right, #ffeef4 0%, #fff8f5 45%, #f6ebff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #4a2536;
+        }
+
+        /* إطار العنوان الملكي المزخرف بإطار ذهبي ناعم */
+        .royal-banner {
+            background: linear-gradient(180deg, #fff6f8 0%, #fce4ec 100%);
+            border: 3px solid #d8b467;
+            box-shadow: 0 10px 25px rgba(214, 104, 142, 0.18), inset 0 0 15px rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        /* تصميم الظرف التفاعلي المطابق لألوان وشكل الصورة */
+        .envelope-card {
+            position: relative;
+            border-radius: 22px;
+            padding-top: 38px;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+        .envelope-card:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+        .envelope-card:hover .envelope-letter {
+            transform: translateY(-10px);
+        }
+
+        /* الورقة البيضاء الخارجة من الظرف */
+        .envelope-letter {
+            background: linear-gradient(180deg, #ffffff 0%, #fffaf7 100%);
+            border-radius: 16px 16px 8px 8px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.06);
+            transition: transform 0.35s ease;
+            border: 1.5px solid rgba(216, 180, 103, 0.4);
+        }
+
+        /* جيب الظرف الأمامي */
+        .envelope-pocket {
+            position: relative;
+            border-radius: 14px 14px 22px 22px;
+            margin-top: -18px;
+            padding: 26px 12px 16px 12px;
+            box-shadow: 0 8px 18px rgba(74, 37, 54, 0.12), inset 0 2px 6px rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.85);
+        }
+
+        /* طيات الظرف الجانبية (V-fold) */
+        .envelope-pocket::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 24px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.45) 50%, transparent 50%),
+                        linear-gradient(225deg, rgba(255,255,255,0.45) 50%, transparent 50%);
+            background-size: 50% 100%;
+            background-position: left top, right top;
+            background-repeat: no-repeat;
+            border-radius: 12px 12px 0 0;
+            pointer-events: none;
+        }
+
+        /* ألوان الأظرف الخمسة المطابقة للصورة تماماً */
+        .env-pink .envelope-pocket { background: linear-gradient(145deg, #fbc2d4 0%, #f598b6 100%); }
+        .env-purple .envelope-pocket { background: linear-gradient(145deg, #e7d1fa 0%, #cfa8f0 100%); }
+        .env-mint .envelope-pocket { background: linear-gradient(145deg, #d3f3e2 0%, #a8dec1 100%); }
+        .env-sky .envelope-pocket { background: linear-gradient(145deg, #d4ebfa 0%, #a5d1ee 100%); }
+        .env-gold .envelope-pocket { background: linear-gradient(145deg, #fdedbe 0%, #f5d380 100%); }
+
+        /* الشارة البيضاوية للعنوان داخل الظرف */
+        .envelope-label-pill {
+            background: rgba(255, 250, 248, 0.94);
+            border: 1.5px solid rgba(216, 180, 103, 0.55);
+            border-radius: 9999px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.06);
+        }
+
+        /* عناصر الخلفية المتطايرة */
+        .floating-bg-item {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: riseUp linear infinite;
+        }
+    </style>
+</head>
+<body class="font-sans selection:bg-pink-200 selection:text-pastel-text">
+
+    <!-- حاوية العناصر المتطايرة في الخلفية (قلوب، فراشات، وحمامات سلام) -->
+    <div id="floating-background" aria-hidden="true"></div>
+
+    <!-- ==================== الصفحة الأولى: شاشة الترحيب ==================== -->
+    <section id="welcome-screen" class="relative z-10 min-h-screen flex flex-col items-center justify-center p-4 sm:p-6 transition-all duration-700">
+        
+        <!-- زهور وزينة علوية -->
+        <div class="royal-banner max-w-2xl w-full rounded-[2.5rem] p-6 sm:p-11 text-center relative">
+            
+            <!-- فيونكة وردية أعلى الإطار مثل الصورة -->
+            <div class="absolute -top-7 left-1/2 transform -translate-x-1/2 w-28 h-14 flex items-center justify-center drop-shadow-md">
+                <svg viewBox="0 0 120 60" class="w-full h-full">
+                    <path d="M60 30 C40 8, 12 10, 15 30 C18 48, 42 45, 60 30 Z" fill="#f48fb1" stroke="#c2597c" stroke-width="2"/>
+                    <path d="M60 30 C80 8, 108 10, 105 30 C102 48, 78 45, 60 30 Z" fill="#f48fb1" stroke="#c2597c" stroke-width="2"/>
+                    <path d="M52 34 L38 56 L48 52 L56 38 Z" fill="#ec7099"/>
+                    <path d="M68 34 L82 56 L72 52 L64 38 Z" fill="#ec7099"/>
+                    <rect x="52" y="21" width="16" height="18" rx="6" fill="#e05684" stroke="#b03a62" stroke-width="2"/>
+                </svg>
+            </div>
+
+            <!-- قلوب وزهور جانبية -->
+            <div class="absolute top-5 right-6 text-pink-400 animate-heart text-2xl">🌸💜</div>
+            <div class="absolute top-5 left-6 text-purple-400 animate-heart text-2xl" style="animation-delay: 0.6s;">🦋💖</div>
+
+            <!-- رسم SVG واقعي لحمامة السلام بتدرجات ظلال وريش طبيعي وغصن زيتون -->
+            <div class="mx-auto w-40 h-40 sm:w-48 sm:h-48 mt-3 mb-4 animate-dove flex items-center justify-center">
+                <svg viewBox="0 0 240 240" class="w-full h-full drop-shadow-xl">
+                    <defs>
+                        <!-- تدرجات ريش الحمامة الواقعي -->
+                        <radialGradient id="doveBodyGrad" cx="38%" cy="35%" r="65%">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="65%" stop-color="#f7f5fa"/>
+                            <stop offset="100%" stop-color="#dfd9e8"/>
+                        </radialGradient>
+                        <linearGradient id="wingBackGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="60%" stop-color="#ede8f5"/>
+                            <stop offset="100%" stop-color="#cfc5de"/>
+                        </linearGradient>
+                        <linearGradient id="wingFrontGrad" x1="15%" y1="0%" x2="85%" y2="100%">
+                            <stop offset="0%" stop-color="#ffffff"/>
+                            <stop offset="55%" stop-color="#faf8fc"/>
+                            <stop offset="100%" stop-color="#e3dce8"/>
+                        </linearGradient>
+                        <linearGradient id="beakGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#f8c27a"/>
+                            <stop offset="100%" stop-color="#d68938"/>
+                        </linearGradient>
+                        <radialGradient id="haloGlow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#fff8fb" stop-opacity="1"/>
+                            <stop offset="75%" stop-color="#fcebf2" stop-opacity="0.8"/>
+                            <stop offset="100%" stop-color="#f3e5ff" stop-opacity="0.4"/>
+                        </radialGradient>
+                    </defs>
+
+                    <!-- هالة ناعمة وإطار ذهبي -->
+                    <circle cx="120" cy="120" r="102" fill="url(#haloGlow)" stroke="#d8b467" stroke-width="2.5" stroke-dasharray="7 5"/>
+
+                    <!-- قلب أرجواني/وردي ناعم يرفرف فوق الحمامة -->
+                    <path d="M118 38 C112 28, 97 31, 97 43 C97 53, 118 65, 118 65 C118 65, 139 53, 139 43 C139 31, 124 28, 118 38 Z" fill="#e879a8" opacity="0.9"/>
+
+                    <!-- غصن الزيتون الطبيعي في المنقار -->
+                    <g>
+                        <path d="M36 124 Q55 113 78 112" stroke="#4d8c57" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <path d="M48 117 Q40 108 33 111 Q39 119 48 117 Z" fill="#6ab075"/>
+                        <path d="M58 114 Q52 103 44 105 Q49 114 58 114 Z" fill="#589e63"/>
+                        <path d="M66 113 Q63 102 55 103 Q58 112 66 113 Z" fill="#76bd81"/>
+                        <path d="M46 119 Q41 128 34 127 Q39 119 46 119 Z" fill="#589e63"/>
+                        <path d="M57 116 Q54 126 47 126 Q50 117 57 116 Z" fill="#6ab075"/>
+                        <circle cx="52" cy="119" r="2.6" fill="#3a5a40"/>
+                    </g>
+
+                    <!-- الجناح الخلفي المرتفع بتفاصيل الريش -->
+                    <path d="M112 96 C126 62, 158 46, 178 48 C173 60, 165 68, 156 74 C166 71, 174 70, 181 71 C172 81, 160 88, 148 92 C157 92, 164 93, 170 95 C156 103, 138 106, 120 105 Z" fill="url(#wingBackGrad)" stroke="#c5bad4" stroke-width="1.4" stroke-linejoin="round"/>
+
+                    <!-- ذيل الحمامة المروحي الواقعي -->
+                    <path d="M148 135 L196 144 L190 153 L198 159 L186 164 L190 171 L145 152 Z" fill="url(#wingBackGrad)" stroke="#c5bad4" stroke-width="1.4" stroke-linejoin="round"/>
+                    <line x1="152" y1="141" x2="192" y2="151" stroke="#cfc5de" stroke-width="1"/>
+                    <line x1="150" y1="146" x2="188" y2="161" stroke="#cfc5de" stroke-width="1"/>
+
+                    <!-- جسم الحمامة الانسيابي -->
+                    <path d="M76 110 C67 102, 68 85, 81 82 C92 79, 100 88, 108 95 C124 106, 142 122, 154 138 C142 154, 118 162, 96 156 C78 151, 70 135, 74 120 C75 116, 77 113, 76 110 Z" fill="url(#doveBodyGrad)" stroke="#c5bad4" stroke-width="1.6" stroke-linejoin="round"/>
+
+                    <!-- الجناح الأمامي البارز بطبقات ريش متدرجة -->
+                    <path d="M104 108 C126 84, 166 74, 194 82 C186 94, 174 102, 160 107 C173 107, 184 109, 191 113 C178 122, 162 126, 146 127 C157 130, 166 134, 172 138 C153 144, 128 142, 108 130 C101 125, 99 115, 104 108 Z" fill="url(#wingFrontGrad)" stroke="#bfb3cf" stroke-width="1.6" stroke-linejoin="round"/>
+                    <!-- خطوط تفاصيل الريش الداخلي -->
+                    <path d="M122 109 Q148 98 175 96" stroke="#dcd4e8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <path d="M119 117 Q145 112 172 114" stroke="#dcd4e8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+                    <path d="M116 124 Q138 124 160 131" stroke="#dcd4e8" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+
+                    <!-- المنقار الطبيعي -->
+                    <path d="M70 95 L56 101 L70 104 Q73 99 70 95 Z" fill="url(#beakGrad)" stroke="#b56e24" stroke-width="1" stroke-linejoin="round"/>
+                    <path d="M56 101 L70 100" stroke="#9e5a16" stroke-width="0.9"/>
+
+                    <!-- العين الواقعية مع لمعة الحياة -->
+                    <circle cx="81" cy="94" r="4.2" fill="#2d1b24"/>
+                    <circle cx="81" cy="94" r="4.8" fill="none" stroke="#d8b467" stroke-width="1"/>
+                    <circle cx="79.6" cy="92.6" r="1.4" fill="#ffffff"/>
+                </svg>
+            </div>
+
+            <!-- النص الترحيبي المطلوب -->
+            <h1 class="text-2xl sm:text-4xl font-black text-pastel-text leading-relaxed mb-3">
+                مدرسة ابتدائية عفراء للطفولة المبكرة
+                <span class="block text-pastel-pinkDark mt-1 text-xl sm:text-3xl">ترحب بكم في اليوم العالمي للتسامح</span>
+            </h1>
+
+            <p class="text-[#6e3b52] text-base sm:text-lg max-w-lg mx-auto mb-6 font-medium leading-relaxed">
+                بألوان الفرح والمحبة نحتفي بقيم العفو والصفح، ونفتح معاً أظرف السلام في قلوب صغارنا 💜🕊️
+            </p>
+
+            <!-- بطاقة الإعداد والإشراف والقيادة المدرسية -->
+            <div class="max-w-xl mx-auto mb-7 bg-white/85 backdrop-blur-sm border-2 border-[#d8b467] rounded-3xl p-4 sm:p-5 shadow-sm grid grid-cols-1 sm:grid-cols-3 gap-3 text-center">
+                <div class="bg-[#fff5f8] rounded-2xl p-2.5 border border-pink-200">
+                    <span class="block text-xs font-extrabold text-pastel-pinkDark mb-0.5">✨ إعداد وتنفيذ</span>
+                    <span class="font-black text-pastel-text text-sm sm:text-base">فاطمة الشهراني</span>
+                </div>
+                <div class="bg-[#f6eeff] rounded-2xl p-2.5 border border-purple-200">
+                    <span class="block text-xs font-extrabold text-purple-700 mb-0.5">🛡️ منسقة الأمن والوعي الفكري</span>
+                    <span class="font-black text-pastel-text text-sm sm:text-base">فاطمة مقبل القرني</span>
+                </div>
+                <div class="bg-[#fef8e7] rounded-2xl p-2.5 border border-amber-200">
+                    <span class="block text-xs font-extrabold text-amber-700 mb-0.5">👑 مديرة المدرسة</span>
+                    <span class="font-black text-pastel-text text-sm sm:text-base">فاطمة سعيد القرني</span>
+                </div>
+            </div>
+
+            <!-- زر البدء المطلوب -->
+            <button onclick="startPlatform()" class="group relative inline-flex items-center justify-center gap-3 bg-gradient-to-l from-[#e06d96] via-[#c77dd4] to-[#9b6bc7] hover:brightness-105 text-white font-extrabold text-lg sm:text-xl px-10 py-4 rounded-full shadow-lg shadow-pink-300/60 border-2 border-white transform transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+                <span>للبدء اضغط هنا</span>
+                <span class="bg-white/25 p-1.5 rounded-full group-hover:-translate-x-1 transition-transform">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+                </span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ==================== الصفحة الثانية: المنصة التفاعلية بالأظرف الملونة ==================== -->
+    <main id="main-platform" class="hidden relative z-10 max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-9 space-y-8 transition-all duration-700 opacity-0">
+        
+        <!-- لافتة العنوان الرئيسية المطابقة لأسلوب الصورة (فيونكة + إطار ذهبي + زهور) -->
+        <header class="pt-4">
+            <div class="royal-banner rounded-[2.2rem] px-6 py-6 sm:py-7 text-center max-w-3xl mx-auto relative">
+                <!-- فيونكة وردية علوية -->
+                <div class="absolute -top-7 left-1/2 transform -translate-x-1/2 w-28 h-14 flex items-center justify-center drop-shadow">
+                    <svg viewBox="0 0 120 60" class="w-full h-full">
+                        <path d="M60 30 C40 8, 12 10, 15 30 C18 48, 42 45, 60 30 Z" fill="#f48fb1" stroke="#c2597c" stroke-width="2"/>
+                        <path d="M60 30 C80 8, 108 10, 105 30 C102 48, 78 45, 60 30 Z" fill="#f48fb1" stroke="#c2597c" stroke-width="2"/>
+                        <path d="M52 34 L38 56 L48 52 L56 38 Z" fill="#ec7099"/>
+                        <path d="M68 34 L82 56 L72 52 L64 38 Z" fill="#ec7099"/>
+                        <rect x="52" y="21" width="16" height="18" rx="6" fill="#e05684" stroke="#b03a62" stroke-width="2"/>
+                    </svg>
+                </div>
+
+                <!-- زهور في الزوايا -->
+                <span class="absolute top-3 right-4 text-2xl">🌸</span>
+                <span class="absolute top-3 left-4 text-2xl">🦋</span>
+                <span class="absolute bottom-2 right-5 text-xl">🌷</span>
+                <span class="absolute bottom-2 left-5 text-xl">🕊️</span>
+
+                <h1 class="text-2xl sm:text-4xl font-black text-pastel-text mt-1">
+                    اليوم العالمي للتسامح
+                </h1>
+                <div class="flex items-center justify-center gap-2 mt-2 text-pastel-pinkDark font-bold text-sm sm:text-base">
+                    <span>📖</span>
+                    <span>مدرسة ابتدائية عفراء للطفولة المبكرة</span>
+                </div>
+
+                <!-- زر العودة للرئيسية -->
+                <button onclick="backToWelcome()" class="mt-3 inline-flex items-center gap-1.5 bg-white/90 hover:bg-white text-pastel-text border border-[#d8b467] font-bold px-4 py-1.5 rounded-full text-xs sm:text-sm shadow-sm transition cursor-pointer">
+                    <span>🏠</span>
+                    <span>العودة لشاشة الترحيب</span>
+                </button>
+            </div>
+
+            <!-- شريط اسم المبادرة المصمم مثل شريط "اسم المعلمة" في الصورة -->
+            <div class="max-w-2xl mx-auto mt-5 flex items-stretch rounded-full overflow-hidden border-2 border-[#d8b467] shadow-md bg-white/95">
+                <div class="bg-gradient-to-l from-[#d6688e] to-[#e589a8] text-white font-extrabold px-5 sm:px-7 py-2.5 flex items-center gap-2 text-sm sm:text-base whitespace-nowrap">
+                    <span>🕊️</span>
+                    <span>مبادرة المدرسة :</span>
+                </div>
+                <div class="flex-1 px-4 py-2.5 text-center font-black text-pastel-text text-base sm:text-lg flex items-center justify-center bg-[#fff9fb]">
+                    «غراسُ العفوِ وأجنحةُ السلام» ✨
+                </div>
+            </div>
+        </header>
+
+        <!-- قسم الآية الكريمة بإطار ناعم ومبهج -->
+        <section class="bg-white/90 rounded-[2rem] p-5 sm:p-8 text-center shadow-lg border-2 border-[#d8b467] relative overflow-hidden">
+            <div class="inline-flex items-center gap-2 bg-gradient-to-l from-[#e7d1fa] to-[#fbc2d4] text-pastel-text px-5 py-1 rounded-full text-xs sm:text-sm font-extrabold mb-3 border border-white shadow-sm">
+                <span>📖</span>
+                <span>من هدي القرآن الكريم</span>
+            </div>
+
+            <blockquote class="font-quran text-2xl sm:text-3xl md:text-4xl text-pastel-text leading-loose sm:leading-[3.5rem] max-w-4xl mx-auto">
+                قال تعالى:
+                <span class="block text-[#7a3153] mt-1">
+                    ﴿ وَلْيَعْفُوا وَلْيَصْفَحُوا ۗ أَلَا تُحِبُّونَ أَن يَغْفِرَ اللَّهُ لَكُمْ ۗ وَاللَّهُ غَفُورٌ رَّحِيمٌ ﴾
+                </span>
+            </blockquote>
+            <p class="text-xs sm:text-sm text-pastel-pinkDark font-bold mt-2">[ سورة النور: آية 22 ]</p>
+        </section>
+
+        <!-- ==================== شبكة الأظرف التفاعلية الـ 11 بنفس ألوان الصورة وتبويبات التسامح ==================== -->
+        <section>
+            <div class="text-center mb-6">
+                <h2 class="text-xl sm:text-2xl font-black text-pastel-text inline-flex items-center gap-2 bg-white/80 px-6 py-2 rounded-full border border-[#d8b467] shadow-sm">
+                    <span>💌</span>
+                    <span>افتح أظرف التسامح والمحبة (اضغط على أي ظرف)</span>
+                    <span>🌸</span>
+                </h2>
+            </div>
+
+            <!-- شبكة الأظرف 3 في كل صف مثل الصورة تماماً -->
+            <div id="envelopes-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7">
+                <!-- سيتم توليد الأظرف الـ 11 تلقائياً عبر الجافاسكربت بنفس ترتيب الألوان في الصورة -->
+            </div>
+        </section>
+
+        <!-- ==================== ركن إطلاق حمامة السلام (جدار التسامح التفاعلي) ==================== -->
+        <section class="bg-white/90 rounded-[2rem] p-6 sm:p-8 shadow-xl border-2 border-[#d8b467]">
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-pink-100 pb-5 mb-6">
+                <div class="text-center sm:text-right">
+                    <h3 class="text-xl sm:text-2xl font-black text-pastel-text flex items-center justify-center sm:justify-start gap-2">
+                        <span>🕊️</span>
+                        <span>أطلق حمامة سلامك في سماء مدرسة عفراء</span>
+                    </h3>
+                    <p class="text-sm text-[#6e3b52] mt-1 font-medium">اكتب اسمك وكلمة جميلة عن التسامح لتنضم إلى لوحة القلوب المتسامحة</p>
+                </div>
+
+                <!-- عداد بصمات التسامح -->
+                <div class="bg-gradient-to-br from-[#ffeef4] to-[#f3e6ff] border-2 border-[#d8b467] rounded-2xl px-5 py-3 text-center min-w-[165px] shadow-sm">
+                    <div class="text-2xl animate-heart">💜🕊️</div>
+                    <div class="text-2xl font-black text-pastel-text" id="tolerance-counter">148</div>
+                    <div class="text-xs font-bold text-pastel-pinkDark">قلب متسامح</div>
+                </div>
+            </div>
+
+            <form id="pledge-form" onsubmit="addPledge(event)" class="grid grid-cols-1 sm:grid-cols-12 gap-3 mb-6">
+                <input type="text" id="sender-name" required maxlength="30" placeholder="الاسم (مثال: الصغيرة جوري / أ. سارة)" class="sm:col-span-4 bg-[#fff9fb] border-2 border-pink-200 focus:border-pink-400 rounded-2xl px-4 py-3 text-pastel-text outline-none font-bold text-sm">
+                
+                <input type="text" id="sender-message" required maxlength="90" placeholder="رسالتك (مثال: أسامح أصدقائي وأبتسم للجميع 🌸)" class="sm:col-span-5 bg-[#fff9fb] border-2 border-pink-200 focus:border-pink-400 rounded-2xl px-4 py-3 text-pastel-text outline-none font-bold text-sm">
+                
+                <button type="submit" class="sm:col-span-3 bg-gradient-to-l from-[#e06d96] to-[#9b6bc7] hover:brightness-105 text-white font-extrabold rounded-2xl px-5 py-3 shadow-md transition transform active:scale-95 flex items-center justify-center gap-2 cursor-pointer">
+                    <span>إرسال الظرف</span>
+                    <span>💌</span>
+                </button>
+            </form>
+
+            <!-- بطاقات الرسائل -->
+            <div id="messages-wall" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="bg-[#fff6f9] rounded-2xl p-4 border border-pink-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="font-extrabold text-pastel-text text-sm">🌸 إدارة مدرسة عفراء</span>
+                        <span>🕊️💜</span>
+                    </div>
+                    <p class="text-[#6e3b52] text-sm font-medium">بالتسامح تزهر قلوب صغارنا، وتغدو مدرستنا واحة حب وسلام.</p>
+                </div>
+
+                <div class="bg-[#f6eeff] rounded-2xl p-4 border border-purple-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="font-extrabold text-pastel-text text-sm">🦋 براعم الطفولة المبكرة</span>
+                        <span>💖✨</span>
+                    </div>
+                    <p class="text-[#6e3b52] text-sm font-medium">نعفو ونصفح ونتشارك الألعاب والابتسامة كل يوم!</p>
+                </div>
+
+                <div class="bg-[#eefaf3] rounded-2xl p-4 border border-emerald-200 shadow-sm">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="font-extrabold text-pastel-text text-sm">🌷 أسرة متعاونة</span>
+                        <span>🕊️🌿</span>
+                    </div>
+                    <p class="text-[#6e3b52] text-sm font-medium">شكراً لمدرسة عفراء على غرس هذه القيم النبيلة في نفوس أبنائنا.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- تذييل الصفحة متضمناً أسماء فريق العمل والقيادة -->
+        <footer class="bg-white/90 rounded-[2rem] p-5 sm:p-6 text-center text-[#7a3153] border-2 border-[#d8b467] shadow-md space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-3xl mx-auto">
+                <div class="bg-[#fff5f8] rounded-2xl py-2.5 px-3 border border-pink-200">
+                    <span class="block text-xs font-extrabold text-pastel-pinkDark">✨ إعداد وتنفيذ</span>
+                    <span class="font-black text-pastel-text text-sm sm:text-base">فاطمة الشهراني</span>
+                </div>
+                <div class="bg-[#f6eeff] rounded-2xl py-2.5 px-3 border border-purple-200">
+                    <span class="block text-xs font-extrabold text-purple-700">🛡️ منسقة الأمن والوعي الفكري</span>
+                    <span class="font-black text-pastel-text text-sm sm:text-base">فاطمة مقبل القرني</span>
+                </div>
+                <div class="bg-[#fef8e7] rounded-2xl py-2.5 px-3 border border-amber-200">
+                    <span class="block text-xs font-extrabold text-amber-700">👑 مديرة المدرسة</span>
+                    <span class="font-black text-pastel-text text-sm sm:text-base">فاطمة سعيد القرني</span>
+                </div>
+            </div>
+            <p class="text-xs sm:text-sm font-extrabold text-pastel-text pt-1">
+                مدرسة ابتدائية عفراء للطفولة المبكرة • اليوم العالمي للتسامح 🌸🕊️💜
+            </p>
+        </footer>
+    </main>
+
+    <!-- ==================== نافذة منبثقة (Modal) لعرض محتوى الظرف عند الضغط عليه ==================== -->
+    <div id="envelope-modal" onclick="closeModalOnBackdrop(event)" class="hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300">
+        <div id="modal-card" class="bg-white rounded-[2.2rem] max-w-md w-full p-6 sm:p-8 text-center border-4 border-[#d8b467] shadow-2xl transform transition-all scale-95 relative">
+            <!-- زر إغلاق -->
+            <button onclick="closeEnvelopeModal()" class="absolute top-4 left-4 w-9 h-9 rounded-full bg-pink-100 hover:bg-pink-200 text-pastel-text font-black flex items-center justify-center cursor-pointer">
+                ✕
+            </button>
+
+            <!-- رقم الظرف وأيقونته -->
+            <div id="modal-badge" class="inline-flex items-center gap-2 px-4 py-1 rounded-full text-sm font-extrabold mb-3 border border-[#d8b467]">
+                <span>ظرف رقم 1</span>
+            </div>
+
+            <div id="modal-icon" class="w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl mb-3 shadow-inner border-2 border-white">
+                🕊️
+            </div>
+
+            <h3 id="modal-title" class="text-2xl font-black text-pastel-text mb-3">عنوان الظرف</h3>
+            
+            <p id="modal-desc" class="text-[#5e2d43] text-base leading-relaxed font-medium bg-[#fff9fb] p-4 rounded-2xl border border-pink-100 mb-5">
+                محتوى رسالة التسامح هنا
+            </p>
+
+            <!-- نشاط تفاعلي صغير داخل الظرف -->
+            <div class="bg-[#f8f2ff] rounded-2xl p-3.5 border border-purple-200 mb-5">
+                <span class="text-xs font-extrabold text-purple-700 block mb-1">🌟 همسة تطبيقية لصغارنا:</span>
+                <p id="modal-activity" class="text-sm font-bold text-pastel-text">ابتسم لصديقك وقل له: أنا أحبك في الله!</p>
+            </div>
+
+            <button onclick="pledgeFromEnvelope()" class="w-full bg-gradient-to-l from-[#e06d96] to-[#9b6bc7] hover:brightness-105 text-white font-extrabold py-3.5 rounded-full shadow-md transition transform active:scale-95 cursor-pointer">
+                أتعهد بتطبيق هذا الخلق الجميل 💜🕊️
+            </button>
+        </div>
+    </div>
+
+    <!-- إشعار لطيف -->
+    <div id="toast-notification" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 translate-y-24 opacity-0 transition-all duration-500 z-50 bg-[#5e2d43] text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-2.5 font-bold text-sm sm:text-base border-2 border-[#d8b467]">
+        <span class="text-xl">🕊️🌸</span>
+        <span id="toast-text">رائع!</span>
+    </div>
+
+    <script>
+        // بيانات الأظرف الـ 11 بنفس ترتيب الألوان في الصورة المرفقة وبعناوين مخصصة لليوم العالمي للتسامح
+        const toleranceEnvelopes = [
+            {
+                num: 1,
+                colorClass: 'env-pink',
+                badgeBg: 'bg-[#ffe4ec]',
+                title: 'العفو عند المقدرة',
+                icon: '💜',
+                desc: 'العفو صفة الأقوياء أصحاب القلوب البيضاء؛ نسامح من أخطأ في حقنا لننال محبة الله ومغفرته.',
+                activity: 'إذا أخطأ صديقك دون قصد، قل له بابتسامة: "لا بأس، لقد سامحتك".'
+            },
+            {
+                num: 2,
+                colorClass: 'env-purple',
+                badgeBg: 'bg-[#f1e4ff]',
+                title: 'التآخي والمحبة',
+                icon: '🤝',
+                desc: 'في مدرستنا عفراء، كلنا إخوة وأصدقاء تجمعنا المودة والرحمة والتعاون على الخير.',
+                activity: 'صافح زميلك في الفصل وشاركه التحية الصباحية بحب.'
+            },
+            {
+                num: 3,
+                colorClass: 'env-mint',
+                badgeBg: 'bg-[#e1f7eb]',
+                title: 'الشراكة مع الأسرة',
+                icon: '🏡',
+                desc: 'الأسرة والمدرسة يداً بيد لغرس بذور التسامح والاحترام في نفوس أطفالنا منذ الصغر.',
+                activity: 'أخبر والديك اليوم عن موقف جميل سامحت فيه أحد أصدقائك.'
+            },
+            {
+                num: 4,
+                colorClass: 'env-sky',
+                badgeBg: 'bg-[#e3f3fd]',
+                title: 'تقبّل الاختلاف',
+                icon: '🌍',
+                desc: 'اختلاف أشكالنا وهواياتنا يجعل عالمنا أجمل، بالاحترام والتسامح نعيش معاً في وئام.',
+                activity: 'تعرّف اليوم على صديق جديد في ساحة المدرسة والعب معه.'
+            },
+            {
+                num: 5,
+                colorClass: 'env-gold',
+                badgeBg: 'bg-[#fef4d7]',
+                title: 'الابتسامة والسلام',
+                icon: '😊',
+                desc: 'تبسّمك في وجه أخيك صدقة؛ والابتسامة الصادقة تذيب الخلاف وتنشر السعادة في كل مكان.',
+                activity: 'وزّع 5 ابتسامات مشرقة على معلماتك وأصدقائك اليوم!'
+            },
+            {
+                num: 6,
+                colorClass: 'env-pink',
+                badgeBg: 'bg-[#ffe4ec]',
+                title: 'مبادرة غراس العفو',
+                icon: '🕊️',
+                desc: 'مبادرة مدرسة ابتدائية عفراء للطفولة المبكرة لصناعة جيل متسامح يحمل أجنحة السلام أينما حلّ.',
+                activity: 'ارسم حمامة سلام وقلباً أرجوانياً وأهدِها لصديقك المفضل.'
+            },
+            {
+                num: 7,
+                colorClass: 'env-mint',
+                badgeBg: 'bg-[#e1f7eb]',
+                title: 'الكلمة الطيبة',
+                icon: '🌸',
+                desc: 'الكلمة الطيبة كالشجرة المثمرة؛ نختار أجمل الألفاظ لنُسعد قلوب من حولنا ولا نجرح أحداً.',
+                activity: 'استخدم كلمات الشكر واللطف: "شكراً لك"، "من فضلك"، "آسف".'
+            },
+            {
+                num: 8,
+                colorClass: 'env-purple',
+                badgeBg: 'bg-[#f1e4ff]',
+                title: 'بيئة مدرسية آمنة',
+                icon: '🌱',
+                desc: 'فصلنا ومدرستنا بيئة دافئة يسودها الأمان والاحترام المتبادل بين جميع الأطفال.',
+                activity: 'حافظ على نظافة فصلك وساعد زميلك في ترتيب أدواته.'
+            },
+            {
+                num: 9,
+                colorClass: 'env-sky',
+                badgeBg: 'bg-[#e3f3fd]',
+                title: 'التعاون والمشاركة',
+                icon: '🎁',
+                desc: 'المشاركة في الألعاب والألوان تضاعف الفرح وتجعل الصداقة أقوى وأجمل.',
+                activity: 'شارك ألوانك أو لعبتك المفضلة مع زميلك بكل سرور.'
+            },
+            {
+                num: 10,
+                colorClass: 'env-gold',
+                badgeBg: 'bg-[#fef4d7]',
+                title: 'نقاء القلوب',
+                icon: '💖',
+                desc: 'القلب المتسامح قلب خفيف وسعيد، لا يحمل غضباً ولا حقداً بل يفيض بالحب للجميع.',
+                activity: 'إذا شعرت بالغضب، خذ نفساً عميقاً وابتسم، فالتسامح راحة للقلب.'
+            },
+            {
+                num: 11,
+                colorClass: 'env-pink',
+                badgeBg: 'bg-[#ffe4ec]',
+                title: 'سفراء التسامح الصغار',
+                icon: '👑',
+                desc: 'أطفال مدرسة عفراء هم سفراء السلام والتسامح في أسرهم ومجتمعهم ووطنهم الغالي.',
+                activity: 'أنت بطل التسامح اليوم! احرص على نشر المحبة في كل مكان.'
+            }
+        ];
+
+        // بناء الأظرف الـ 11 داخل الشبكة
+        function renderEnvelopes() {
+            const grid = document.getElementById('envelopes-grid');
+            grid.innerHTML = '';
+
+            toleranceEnvelopes.forEach((env) => {
+                const card = document.createElement('div');
+                card.className = `envelope-card ${env.colorClass} select-none`;
+                card.onclick = () => openEnvelopeModal(env);
+
+                card.innerHTML = `
+                    <!-- الورقة البيضاء الخارجة من الظرف -->
+                    <div class="envelope-letter mx-4 pt-3 pb-6 px-3 text-center relative">
+                        <!-- رقم الظرف الذهبي الدائري في الزاوية العلوية اليسرى مثل الصورة -->
+                        <span class="absolute top-2.5 left-3 w-8 h-8 rounded-full bg-[#fdf1cf] border border-[#d8b467] text-pastel-text font-black text-sm flex items-center justify-center shadow-sm">
+                            ${env.num}
+                        </span>
+
+                        <!-- زهرة صغيرة على يمين الورقة -->
+                        <span class="absolute top-3 right-3 text-base opacity-85">🌸</span>
+
+                        <!-- رمز مصغر أعلى الورقة (حمامة/قلب/زهرة) -->
+                        <div class="text-xs font-extrabold text-pastel-pinkDark tracking-wider mb-1">
+                            🕊️ رسالة تسامح
+                        </div>
+
+                        <!-- دائرة الأيقونة الوسطى المزينة بالزهور -->
+                        <div class="w-14 h-14 mx-auto rounded-full bg-[#fff7fa] border-2 border-[#d8b467] flex items-center justify-center text-2xl shadow-sm relative z-10">
+                            ${env.icon}
+                        </div>
+                    </div>
+
+                    <!-- جيب الظرف الأمامي الملون -->
+                    <div class="envelope-pocket text-center">
+                        <!-- زهور صغيرة على حافة الظرف -->
+                        <span class="absolute -top-3 right-4 text-lg drop-shadow-sm">🌸</span>
+                        <span class="absolute -top-3 left-4 text-base drop-shadow-sm">✨</span>
+
+                        <!-- الشارة البيضاوية التي تحمل عنوان التبويب -->
+                        <div class="envelope-label-pill py-2.5 px-4 mx-auto max-w-[92%]">
+                            <h3 class="font-black text-pastel-text text-base sm:text-lg leading-snug">
+                                ${env.title}
+                            </h3>
+                        </div>
+                        <span class="inline-block mt-2 text-[11px] font-extrabold text-pastel-text/80">
+                            اضغط لفتح الظرف 💌
+                        </span>
+                    </div>
+                `;
+
+                grid.appendChild(card);
+            });
+        }
+
+        // فتح نافذة الظرف
+        function openEnvelopeModal(env) {
+            const modal = document.getElementById('envelope-modal');
+            const modalCard = document.getElementById('modal-card');
+            const badge = document.getElementById('modal-badge');
+            const icon = document.getElementById('modal-icon');
+            const title = document.getElementById('modal-title');
+            const desc = document.getElementById('modal-desc');
+            const activity = document.getElementById('modal-activity');
+
+            badge.className = `inline-flex items-center gap-2 px-4 py-1 rounded-full text-sm font-extrabold mb-3 border border-[#d8b467] ${env.badgeBg} text-pastel-text`;
+            badge.innerHTML = `<span>💌</span><span>ظرف التسامح رقم (${env.num})</span>`;
+            
+            icon.className = `w-20 h-20 mx-auto rounded-full flex items-center justify-center text-4xl mb-3 shadow-inner border-2 border-[#d8b467] ${env.badgeBg}`;
+            icon.textContent = env.icon;
+            
+            title.textContent = env.title;
+            desc.textContent = env.desc;
+            activity.textContent = env.activity;
+
+            modal.classList.remove('hidden');
+            requestAnimationFrame(() => {
+                modalCard.classList.remove('scale-95');
+                modalCard.classList.add('scale-100');
+            });
+            burstHearts();
+        }
+
+        function closeEnvelopeModal() {
+            const modal = document.getElementById('envelope-modal');
+            const modalCard = document.getElementById('modal-card');
+            modalCard.classList.remove('scale-100');
+            modalCard.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+
+        function closeModalOnBackdrop(event) {
+            if (event.target.id === 'envelope-modal') {
+                closeEnvelopeModal();
+            }
+        }
+
+        function pledgeFromEnvelope() {
+            incrementCounter();
+            burstHearts();
+            closeEnvelopeModal();
+            showToast('بارك الله فيك يا بطل التسامح! تم تسجيل تعهدك الجميل 💜🕊️');
+        }
+
+        // خلفية القلوب والفراشات وحمامات السلام المتطايرة
+        function createFloatingBackground() {
+            const container = document.getElementById('floating-background');
+            const icons = ['🌸', '💜', '🕊️', '💖', '🦋', '🌷'];
+            
+            setInterval(() => {
+                const item = document.createElement('div');
+                item.className = 'floating-bg-item';
+                item.textContent = icons[Math.floor(Math.random() * icons.length)];
+                item.style.left = Math.random() * 95 + 'vw';
+                item.style.fontSize = (Math.random() * 14 + 16) + 'px';
+                const duration = Math.random() * 6 + 7;
+                item.style.animationDuration = duration + 's';
+                
+                container.appendChild(item);
+                setTimeout(() => item.remove(), duration * 1000);
+            }, 950);
+        }
+
+        // الانتقال من شاشة الترحيب إلى المنصة
+        function startPlatform() {
+            const welcome = document.getElementById('welcome-screen');
+            const main = document.getElementById('main-platform');
+            
+            welcome.classList.add('opacity-0', 'scale-95');
+            setTimeout(() => {
+                welcome.classList.add('hidden');
+                main.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    main.classList.remove('opacity-0');
+                });
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                burstHearts();
+            }, 380);
+        }
+
+        function backToWelcome() {
+            const welcome = document.getElementById('welcome-screen');
+            const main = document.getElementById('main-platform');
+            
+            main.classList.add('opacity-0');
+            setTimeout(() => {
+                main.classList.add('hidden');
+                welcome.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    welcome.classList.remove('opacity-0', 'scale-95');
+                });
+            }, 380);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast-notification');
+            const toastText = document.getElementById('toast-text');
+            toastText.textContent = message;
+            
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 3500);
+        }
+
+        function addPledge(event) {
+            event.preventDefault();
+            const nameInput = document.getElementById('sender-name');
+            const msgInput = document.getElementById('sender-message');
+            const wall = document.getElementById('messages-wall');
+
+            const name = nameInput.value.trim();
+            const msg = msgInput.value.trim();
+            if (!name || !msg) return;
+
+            const cardColors = [
+                'bg-[#fff6f9] border-pink-200',
+                'bg-[#f6eeff] border-purple-200',
+                'bg-[#eefaf3] border-emerald-200',
+                'bg-[#eef7fd] border-sky-200',
+                'bg-[#fef9ea] border-amber-200'
+            ];
+            const randomStyle = cardColors[Math.floor(Math.random() * cardColors.length)];
+
+            const card = document.createElement('div');
+            card.className = `${randomStyle} rounded-2xl p-4 border-2 shadow-sm transform transition-all duration-500 scale-95 opacity-0`;
+            
+            const header = document.createElement('div');
+            header.className = 'flex items-center justify-between mb-1.5';
+            
+            const nameSpan = document.createElement('span');
+            nameSpan.className = 'font-extrabold text-pastel-text text-sm';
+            nameSpan.textContent = '💌 ' + name;
+            
+            const iconSpan = document.createElement('span');
+            iconSpan.textContent = '🕊️🌸';
+            
+            header.appendChild(nameSpan);
+            header.appendChild(iconSpan);
+
+            const bodyP = document.createElement('p');
+            bodyP.className = 'text-[#6e3b52] text-sm font-medium';
+            bodyP.textContent = msg;
+
+            card.appendChild(header);
+            card.appendChild(bodyP);
+
+            wall.insertBefore(card, wall.firstChild);
+            requestAnimationFrame(() => {
+                card.classList.remove('scale-95', 'opacity-0');
+            });
+
+            nameInput.value = '';
+            msgInput.value = '';
+            incrementCounter();
+            burstHearts();
+            showToast('شكراً لك يا ' + name + '! حلّق ظرف تسامحك في سماء المبادرة 💌🕊️');
+        }
+
+        function incrementCounter() {
+            const counterEl = document.getElementById('tolerance-counter');
+            counterEl.textContent = parseInt(counterEl.textContent, 10) + 1;
+        }
+
+        function burstHearts() {
+            const container = document.getElementById('floating-background');
+            const icons = ['🌸', '💜', '🕊️', '💖', '🦋'];
+            for (let i = 0; i < 12; i++) {
+                const item = document.createElement('div');
+                item.className = 'floating-bg-item';
+                item.textContent = icons[i % icons.length];
+                item.style.left = (10 + Math.random() * 80) + 'vw';
+                item.style.fontSize = (20 + Math.random() * 14) + 'px';
+                item.style.animationDuration = (3 + Math.random() * 2) + 's';
+                container.appendChild(item);
+                setTimeout(() => item.remove(), 4500);
+            }
+        }
+
+        window.onload = function() {
+            renderEnvelopes();
+            createFloatingBackground();
+        };
+    </script>
+</body>
+</html>
